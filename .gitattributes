@@ -1,0 +1,2 @@
+# Do not count generated/raw HTML data in GitHub language statistics
+data/raw/farmer_schemes_2026.html linguist-generated
