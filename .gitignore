@@ -1,0 +1,26 @@
+# Python
+venv/
+__pycache__/
+*.py[cod]
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Local caches
+.cache/
+.pytest_cache/
+
+# Local runtime files
+user_memory.json
+
+# Local vector-store/build artifacts
+faiss_index/
+vectorstores/
+
+# macOS
+.DS_Store
