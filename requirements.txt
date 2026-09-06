@@ -10,19 +10,15 @@ langchain-core
 langchain-community
 langchain-openai
 
-# Vector store
+# Vector database / semantic retrieval
 faiss-cpu
 
 # Redis cache
 redis
 
-# PDF processing
+# PDF processing + OCR
 pymupdf
+pytesseract
 
-# Data processing / ingestion
-pandas
-openpyxl
-python-pptx
-
-# Web scraping
+# Web scraping / browser automation
 playwright
