@@ -8,31 +8,31 @@ The project combines **web/data ingestion, Playwright, OpenAI Embeddings, FAISS,
 
 ---
 
-## ✨ Features
+## Features
 
-- 🌐 Web data collection with **Playwright**
-- 📄 Multi-format data ingestion
-- 🧹 Data cleaning and normalization
-- 🏷️ Metadata enrichment
-- ✂️ Text chunking
-- 🧮 **OpenAI Embeddings**
-- 🔎 **FAISS** semantic retrieval
-- 🧠 Query classification
-- 💬 Conversation memory
-- 🔄 Contextual query rewriting
-- ✍️ Query rewriting
-- ✅ Retrieval grading
-- 🛠️ **Corrective RAG**
-- 🤖 **OpenAI API / ChatOpenAI**
-- 🎯 Grounded answer generation
-- 🔗 Provenance tracking
-- ⚡ **Redis caching**
-- 👥 Farmer / Public / Government / Agency profiles
-- 🌱 Scheme-specific retrieval
-- 👋 Greeting and courtesy handling
-- 🚫 Out-of-domain protection
-- ⌨️ Character-by-character answer streaming
-- 🖥️ Streamlit UI
+- Web data collection with **Playwright**
+- Multi-format data ingestion
+- Data cleaning and normalization
+- Metadata enrichment
+- Text chunking
+- **OpenAI Embeddings**
+- **FAISS** semantic retrieval
+- Query classification
+- Conversation memory
+- Contextual query rewriting
+- Query rewriting
+- Retrieval grading
+- **Corrective RAG**
+- **OpenAI API / ChatOpenAI**
+- Grounded answer generation
+- Provenance tracking
+- **Redis caching**
+- Farmer / Public / Government / Agency profiles
+- Scheme-specific retrieval
+- Greeting and courtesy handling
+- Out-of-domain protection
+- Character-by-character answer streaming
+- Streamlit UI
 
 ---
 
