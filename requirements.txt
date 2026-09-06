@@ -1,0 +1,28 @@
+streamlit
+
+# Environment variables
+python-dotenv
+
+# OpenAI + LangChain
+openai
+langchain
+langchain-core
+langchain-community
+langchain-openai
+
+# Vector store
+faiss-cpu
+
+# Redis cache
+redis
+
+# PDF processing
+pymupdf
+
+# Data processing / ingestion
+pandas
+openpyxl
+python-pptx
+
+# Web scraping
+playwright
