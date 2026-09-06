@@ -686,7 +686,7 @@ Technical details such as chunk IDs, retrieval scores and source metadata are hi
 
 ---
 
-# ⌨️ Character-by-Character Streaming
+# Character-by-Character Streaming
 
 The application uses a typewriter-style UI effect.
 
@@ -735,7 +735,7 @@ This is a **UI typewriter effect**. The RAG backend still generates the complete
 
 ---
 
-# 📁 Project Structure
+# Project Structure
 
 ```text
 GEN AI RAG/
@@ -779,7 +779,7 @@ GEN AI RAG/
 
 ---
 
-# ⚙️ Installation
+# Installation
 
 ## 1. Clone the repository
 
