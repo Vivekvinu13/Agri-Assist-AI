@@ -36,7 +36,7 @@ The project combines **web/data ingestion, Playwright, OpenAI Embeddings, FAISS,
 
 ---
 
-# 🏗️ Architecture
+# Architecture
 
 ```text
                     SOURCE DATA
