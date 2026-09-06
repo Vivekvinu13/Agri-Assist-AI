@@ -122,7 +122,7 @@ The project combines **web/data ingestion, Playwright, OpenAI Embeddings, FAISS,
 
 ---
 
-# 🛠️ Technology Stack
+# Technology Stack
 
 | Technology | Purpose |
 |---|---|
@@ -140,7 +140,7 @@ The project combines **web/data ingestion, Playwright, OpenAI Embeddings, FAISS,
 
 ---
 
-# 📥 Data Ingestion
+# Data Ingestion
 
 The RAG knowledge base is built from agriculture-related sources.
 
@@ -189,7 +189,7 @@ FAISS
 
 ---
 
-# ✂️ Text Chunking
+# Text Chunking
 
 Large documents are divided into smaller retrieval units before embeddings are generated.
 
@@ -209,7 +209,7 @@ Chunk N
 
 ---
 
-# 🧮 Text Embeddings
+# Text Embeddings
 
 The current retrieval implementation uses:
 
@@ -235,7 +235,7 @@ Embeddings enable semantic retrieval, so questions can match relevant informatio
 
 ---
 
-# 🔎 FAISS Vector Search
+# FAISS Vector Search
 
 FAISS is used to index and search the embedding vectors.
 
@@ -259,7 +259,7 @@ DEFAULT_TOP_K = 5
 
 ---
 
-# 🧠 Query Classification
+# Query Classification
 
 Before normal retrieval, the system classifies the query.
 
@@ -288,7 +288,7 @@ An unrelated weather query can be classified outside the agriculture retrieval s
 
 ---
 
-# 💬 Conversation Memory
+# Conversation Memory
 
 Conversation memory enables multi-turn conversations.
 
@@ -315,7 +315,7 @@ how much
 
 ---
 
-# 🔄 Contextual Query Rewriting
+# Contextual Query Rewriting
 
 Follow-up questions are converted into standalone queries.
 
@@ -347,7 +347,7 @@ This makes downstream retrieval more reliable.
 
 ---
 
-# ✍️ Query Rewriting
+# Query Rewriting
 
 The project also includes query rewriting as part of the retrieval correction flow.
 
@@ -355,7 +355,7 @@ When retrieval is weak, the system can generate a clearer search query and use i
 
 ---
 
-# ✅ Retrieval Grading
+# Retrieval Grading
 
 Retrieved documents are evaluated before answer generation.
 
@@ -378,7 +378,7 @@ Initial retrieval is accepted when it is relevant and sufficiently confident.
 
 ---
 
-# 🛠️ Corrective RAG
+# Corrective RAG
 
 The project uses **Corrective RAG**.
 
@@ -413,7 +413,7 @@ This is particularly useful for vague or poorly worded farmer questions.
 
 ---
 
-# 🤖 OpenAI API
+# OpenAI API
 
 The application uses the **OpenAI API** through LangChain's `ChatOpenAI`.
 
@@ -442,7 +442,7 @@ This project uses **OpenAI API**.
 
 ---
 
-# 🎯 Grounded Answer Generation
+# Grounded Answer Generation
 
 After retrieval and grading, relevant evidence is sent to the LLM.
 
@@ -464,7 +464,7 @@ The system also tracks whether the result is grounded.
 
 ---
 
-# 🔗 Provenance
+# Provenance
 
 The system retains source metadata for retrieved chunks.
 
@@ -495,7 +495,7 @@ Detailed provenance is retained internally for testing and traceability but is n
 
 ---
 
-# ⚡ Redis Caching
+# Redis Caching
 
 Redis is used to cache grounded answers.
 
@@ -530,7 +530,7 @@ Repeated requests can therefore avoid unnecessary RAG and LLM work.
 
 ---
 
-# 👋 Conversational Guardrails
+# Conversational Guardrails
 
 Simple conversational messages are handled without retrieval.
 
@@ -569,7 +569,7 @@ Small talk, acknowledgements and farewells are handled similarly.
 
 ---
 
-# 🚫 Out-of-Domain Handling
+# Out-of-Domain Handling
 
 The application does not force unrelated questions through the agriculture knowledge base.
 
@@ -589,7 +589,7 @@ The application then returns an agriculture-focused response instead of using un
 
 ---
 
-# 👥 User Profiles
+# User Profiles
 
 The UI supports:
 
@@ -634,7 +634,7 @@ The selected `scheme_id` is passed into the retrieval pipeline.
 
 ---
 
-# 🔄 Role and Scheme Reset
+# Role and Scheme Reset
 
 Changing the role or scheme starts a clean conversation context.
 
@@ -650,7 +650,7 @@ The cache cleanup is targeted rather than flushing the entire Redis database.
 
 ---
 
-# 🖥️ Streamlit UI
+# Streamlit UI
 
 The final UI was designed for farmers and non-technical users.
 
@@ -816,7 +816,7 @@ pip install -r requirements.txt
 
 ---
 
-# 🔐 Environment Variables
+# Environment Variables
 
 Create a `.env` file:
 
@@ -840,7 +840,7 @@ The embedding model is controlled through the project's `EMBEDDING_MODEL` config
 
 ---
 
-# 🗄️ Redis Setup
+# Redis Setup
 
 On macOS:
 
@@ -868,7 +868,7 @@ PONG
 
 ---
 
-# ▶️ Run the Application
+# Run the Application
 
 ```bash
 source venv/bin/activate
@@ -878,7 +878,7 @@ streamlit run app.py
 
 ---
 
-# 🧪 Testing
+# Testing
 
 Run the main tests:
 
@@ -896,7 +896,7 @@ python3 -m tests.test_provenance
 
 ---
 
-# ✅ Validation Examples
+# Validation Examples
 
 ### PM-KISAN
 
@@ -966,7 +966,7 @@ Second request → Cache Hit
 
 ---
 
-# 🎬 Demo Flow
+# Demo Flow
 
 A good demonstration sequence is:
 
@@ -982,7 +982,7 @@ A good demonstration sequence is:
 
 ---
 
-# 🔑 Key Engineering Decisions
+# Key Engineering Decisions
 
 ### Playwright
 Used for dynamic browser-based web data collection.
@@ -1022,7 +1022,7 @@ Provides a conversational typewriter-style response experience.
 
 ---
 
-# 🏆 Final Capability Summary
+# Final Capability Summary
 
 ```text
 ✅ Playwright
@@ -1057,18 +1057,18 @@ Provides a conversational typewriter-style response experience.
 
 ---
 
-# 🔮 Future Enhancements
+# Future Enhancements
 
-- 🌐 Multilingual and regional-language support
-- 🎙️ Voice input/output
-- 📍 Location/state-specific recommendations
-- 🧾 Document upload
-- ✅ Personalized eligibility assessment
-- 🔗 Government portal integration
-- 📊 Scheme comparison
-- 📈 Analytics and monitoring
-- 🐳 Docker deployment
-- ☁️ Cloud deployment
+- Multilingual and regional-language support
+- Voice input/output
+- Location/state-specific recommendations
+- Document upload
+- Personalized eligibility assessment
+- Government portal integration
+- Scheme comparison
+- Analytics and monitoring
+- Docker deployment
+- Cloud deployment
 
 ---
 
