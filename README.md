@@ -30,7 +30,9 @@ The project combines **web/data ingestion, Playwright, OpenAI Embeddings, FAISS,
 - Farmer / Public / Government / Agency profiles
 - Scheme-specific retrieval
 - Greeting and courtesy handling
+- Input Guardrails
 - Out-of-domain protection
+- Input guardrails
 - Character-by-character answer streaming
 - Streamlit UI
 
@@ -1008,6 +1010,9 @@ Evaluates whether retrieved evidence is relevant enough.
 ### Corrective RAG
 Retries weak retrieval with an improved query.
 
+### Input Guardrails
+Validates user input before it enters the RAG pipeline and blocks empty, excessively long, or basic prompt-injection attempts.
+
 ### OpenAI API
 Provides LLM-based classification, reasoning, rewriting, grading and answer generation.
 
@@ -1050,6 +1055,8 @@ Provides a conversational typewriter-style response experience.
 ✅ Courtesy handling
 ✅ Small talk handling
 ✅ Farewell handling
+✅ Input validation
+✅ Prompt-injection protection
 ✅ Out-of-domain protection
 ✅ Character-by-character streaming
 ✅ Streamlit UI
