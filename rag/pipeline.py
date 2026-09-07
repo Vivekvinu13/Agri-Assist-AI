@@ -38,10 +38,12 @@ GREETING_RESPONSES = {
     "good morning",
     "good afternoon",
     "good evening",
+
 }
 
 THANKS_RESPONSES = {
     "thanks",
+    "thankyou",
     "thank you",
     "thanks a lot",
     "thank you so much",
@@ -64,6 +66,8 @@ FAREWELL_RESPONSES = {
     "good bye",
     "see you",
     "see you later",
+    "goodnight",
+    "good night",
 }
 
 ACKNOWLEDGEMENT_RESPONSES = {

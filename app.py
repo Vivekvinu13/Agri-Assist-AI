@@ -7,6 +7,7 @@ import streamlit as st
 
 from rag.pipeline import run_rag_pipeline
 from rag.cache import get_redis_client
+from rag.input_guardrails import validate_input
 
 
 # =========================================================
@@ -1681,7 +1682,64 @@ user_query = typed_query or pending_query
 if user_query:
 
     # -----------------------------------------------------
-    # Save the user message to conversation state.
+    # INPUT GUARDRAIL
+    # -----------------------------------------------------
+
+    is_valid, guardrail_message = validate_input(
+        user_query
+    )
+
+    if not is_valid:
+
+        # Show the user's blocked question
+        user_col, right_spacer = st.columns(
+            [0.82, 0.18],
+            gap="small",
+        )
+
+        with user_col:
+            with st.chat_message(
+                "user",
+                avatar="👨‍🌾",
+            ):
+                st.markdown(user_query)
+
+        # Show guardrail response
+        left_spacer, assistant_col = st.columns(
+            [0.18, 0.82],
+            gap="small",
+        )
+
+        with assistant_col:
+            with st.chat_message(
+                "assistant",
+                avatar="🌾",
+            ):
+                st.markdown(guardrail_message)
+
+        # Save both messages
+        st.session_state.messages.append(
+            {
+                "role": "user",
+                "content": user_query,
+            }
+        )
+
+        st.session_state.messages.append(
+            {
+                "role": "assistant",
+                "content": guardrail_message,
+            }
+        )
+
+        # Do NOT send blocked input to RAG
+        st.session_state.pending_query = None
+
+        st.stop()
+
+
+    # -----------------------------------------------------
+    # Save valid user message
     # -----------------------------------------------------
 
     st.session_state.messages.append(
