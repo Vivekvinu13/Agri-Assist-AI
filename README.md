@@ -32,7 +32,6 @@ The project combines **web/data ingestion, Playwright, OpenAI Embeddings, FAISS,
 - Greeting and courtesy handling
 - **Input Guardrails**
 - Out-of-domain protection
-- Input guardrails
 - Character-by-character answer streaming
 **- Streamlit UI**
 
