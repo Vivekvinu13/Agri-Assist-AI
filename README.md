@@ -30,11 +30,11 @@ The project combines **web/data ingestion, Playwright, OpenAI Embeddings, FAISS,
 - Farmer / Public / Government / Agency profiles
 - Scheme-specific retrieval
 - Greeting and courtesy handling
-- Input Guardrails
+- **Input Guardrails**
 - Out-of-domain protection
 - Input guardrails
 - Character-by-character answer streaming
-- Streamlit UI
+**- Streamlit UI**
 
 ---
 
@@ -136,6 +136,7 @@ The project combines **web/data ingestion, Playwright, OpenAI Embeddings, FAISS,
 | **OpenAI API / ChatOpenAI** | Classification, reasoning, rewriting and answer generation |
 | **Corrective RAG** | Correct weak first-pass retrieval |
 | **Redis** | Response caching |
+| **Guardrails** | Response caching |
 | **Streamlit** | User interface |
 
 > The current `rag/retriever.py` uses `OpenAIEmbeddings` and FAISS. The exact embedding model is supplied through the project's `EMBEDDING_MODEL` configuration and should be documented from that configuration rather than assumed.
@@ -463,72 +464,6 @@ Grounded Answer
 ```
 
 The system also tracks whether the result is grounded.
-
----
-
-# Provenance
-
-The system retains source metadata for retrieved chunks.
-
-Typical fields include:
-
-```text
-chunk_id
-scheme_id
-scheme_name
-source_type
-source_file
-page
-```
-
-This provides traceability:
-
-```text
-Answer
-  ↓
-Retrieved Chunk
-  ↓
-Source Document
-  ↓
-Page / Metadata
-```
-
-Detailed provenance is retained internally for testing and traceability but is not shown to normal end users.
-
----
-
-# Redis Caching
-
-Redis is used to cache grounded answers.
-
-```text
-Question
-    ↓
-Redis Lookup
-    │
- ┌──┴──┐
-HIT   MISS
- │      │
- ▼      ▼
-Cache   RAG
-Answer   │
-         ▼
-      Answer
-         │
-         ▼
-       Redis
-```
-
-The cache key includes context such as:
-
-```text
-query
-role
-conversation_id
-scheme_id
-```
-
-Repeated requests can therefore avoid unnecessary RAG and LLM work.
 
 ---
 
@@ -895,93 +830,6 @@ python3 -m tests.test_pipeline
 python3 -m tests.test_pipeline_cache
 python3 -m tests.test_provenance
 ```
-
----
-
-# Validation Examples
-
-### PM-KISAN
-
-```text
-Who is eligible for PM-KISAN?
-```
-
-Validates:
-
-```text
-Classification
-Retrieval
-Grading
-Grounded Answer
-Provenance
-```
-
-### Follow-up
-
-```text
-Who is eligible for PM-KISAN?
-How much do they get?
-```
-
-Validates:
-
-```text
-Conversation Memory
-+
-Contextual Query Rewriting
-+
-RAG
-```
-
-### Micro Irrigation
-
-```text
-What assistance is available for micro irrigation?
-```
-
-Validates scheme-related retrieval.
-
-### Vague Query
-
-```text
-Tell me about help for water.
-```
-
-Validates semantic retrieval and the Corrective RAG workflow.
-
-### Out-of-Domain
-
-```text
-What is the weather forecast tomorrow?
-```
-
-Validates that irrelevant queries are not forced into agriculture retrieval.
-
-### Redis
-
-Ask the same question twice:
-
-```text
-First request  → Cache Miss
-Second request → Cache Hit
-```
-
----
-
-# Demo Flow
-
-A good demonstration sequence is:
-
-1. Say `Hi`
-2. Select **PM-KISAN**
-3. Ask `Who is eligible for PM-KISAN?`
-4. Follow up with `How much do they get?`
-5. Change to **PM Krishi Sinchai Yojana**
-6. Ask about micro irrigation
-7. Ask the vague question `Tell me about help for water.`
-8. Ask an unrelated weather question
-9. Repeat a previous question to demonstrate Redis caching
-
 ---
 
 # Key Engineering Decisions
